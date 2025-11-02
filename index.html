@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainBloom - Discover Your Cognitive Potential</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="brain-icon">🧠</span>
+                <span class="logo-text">BrainBloom</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#test">Take Test</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-elements">
+            <div class="floating-item" style="--delay: 0s;">🧠</div>
+            <div class="floating-item" style="--delay: 1s;">💡</div>
+            <div class="floating-item" style="--delay: 2s;">⭐</div>
+            <div class="floating-item" style="--delay: 3s;">🎯</div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Discover Your <span class="gradient-text">Cognitive Potential</span>
+            </h1>
+            <p class="hero-subtitle">
+                Embark on a friendly journey to understand your unique intelligence profile
+            </p>
+            <button class="cta-button" onclick="startTest()">
+                Start Your Journey
+                <span class="arrow">→</span>
+            </button>
+            
+            <div class="trust-indicators">
+                <span class="trust-item">✓ Scientifically Validated</span>
+                <span class="trust-item">✓ 15 Minutes Only</span>
+                <span class="trust-item">✓ Instant Results</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose BrainBloom?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Assessment</h3>
+                    <p>Adaptive questions tailored to your skill level</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Private & Secure</h3>
+                    <p>Your data is encrypted and never shared</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Detailed Insights</h3>
+                    <p>Comprehensive report with actionable feedback</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Section -->
+    <section id="test" class="test-section">
+        <div class="container">
+            <h2 class="section-title">Ready to Begin?</h2>
+            <div class="test-intro">
+                <p>Our IQ test measures multiple aspects of intelligence including:</p>
+                <ul class="test-features">
+                    <li>Logical Reasoning</li>
+                    <li>Pattern Recognition</li>
+                    <li>Verbal Comprehension</li>
+                    <li>Spatial Awareness</li>
+                </ul>
+                <button class="start-test-btn" onclick="startTest()">
+                    Begin Test
+                    <span class="btn-icon">🚀</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Interface (Hidden by default) -->
+    <section id="test-interface" class="test-interface" style="display: none;">
+        <div class="container">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">Question 1 of 20</span>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <span class="category-tag" id="category-tag">Logical Reasoning</span>
+                    <span class="timer" id="timer">⏱️ 02:00</span>
+                </div>
+                
+                <h2 class="question-text" id="question-text">
+                    Which pattern completes the sequence?
+                </h2>
+                
+                <div class="question-content" id="question-content">
+                    <!-- Question content will be loaded here -->
+                </div>
+                
+                <div class="answer-options" id="answer-options">
+                    <!-- Answer options will be loaded here -->
+                </div>
+                
+                <div class="question-controls">
+                    <button class="btn-secondary" onclick="previousQuestion()">Previous</button>
+                    <button class="btn-primary" onclick="nextQuestion()" disabled id="next-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section (Hidden by default) -->
+    <section id="results" class="results-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Your Cognitive Profile</h2>
+            
+            <div class="results-container">
+                <div class="score-circle">
+                    <svg class="progress-ring" width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#E5E7EB" stroke-width="12"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#6366F1" 
+                                stroke-width="12" stroke-dasharray="565" stroke-dashoffset="141" id="score-circle"/>
+                    </svg>
+                    <div class="score-text">
+                        <span class="score-number" id="score-number">125</span>
+                        <span class="score-label">IQ Score</span>
+                    </div>
+                </div>
+                
+                <div class="score-category">
+                    <h3 id="score-category">Above Average Intelligence</h3>
+                    <p id="score-percentile">You're in the top 16% of test takers!</p>
+                </div>
+            </div>
+
+            <div class="skills-breakdown">
+                <h3>Your Cognitive Strengths</h3>
+                <div id="skills-container">
+                    <!-- Skills will be loaded here -->
+                </div>
+            </div>
+
+            <div class="results-actions">
+                <button class="btn-primary" onclick="downloadReport()">Download Report</button>
+                <button class="btn-secondary" onclick="shareResults()">Share Results</button>
+                <button class="btn-secondary" onclick="retakeTest()">Retake Test</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
